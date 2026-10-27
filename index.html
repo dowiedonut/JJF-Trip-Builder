@@ -1,27 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Your Alaska Fishing Trip | Jimmie Jack's Fishing Lodges</title>
+<style>
+body{margin:0;background:#FBF6F2}
+.jj-band{background:linear-gradient(90deg,#9E1016 0%,#C8202A 45%,#D9452A 75%,#E8792B 100%);}
+.jj-band-in{max-width:1140px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.jj-band img{height:96px;width:auto;display:block}
+.jj-band-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;color:#fff;font-family:"Cabin",system-ui,sans-serif;font-size:15px}
+.jj-cta{background:#F4EC2E;color:#2A1A14;text-decoration:none;font-family:"Bree Serif",Georgia,serif;font-size:17px;padding:9px 16px;border-radius:3px}
+#jjf-trip{background:#FBF6F2 !important}
+#jjf-trip{--sticky-top:20px !important}
+</style>
+</head><body>
+<header class="jj-band">
+  <div class="jj-band-in">
+    <img src="data:image/webp;base64,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" alt="Jimmie Jack's Fishing Lodges, Alaska, est. 1995" width="161" height="108">
+    <div class="jj-band-right"><a class="jj-cta" href="#jjf-trip">Start My Vacation Now</a><span>1-907-262-5561 · bookings@jimmiejackfishing.com</span></div>
+  </div>
+</header>
 <!-- Jimmie Jack Fishing trip builder. Paste this whole file into an Avada Code Block. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cabin:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-#jjf-trip{--paper:#EEF2F0; --ink:#14232B; --muted:#4E5F66; --line:#C5D0CC; --tide:#DCE6E3;
-  --spruce:#1F4D45; --spruce-ink:#FFFFFF; --sockeye:#B8322A; --field:#FFFFFF; --tag:#F7F4E9;
-  --tag-line:#CFC6A8; --warn:#8A4A0E; --warn-bg:#FAEEDC;
+#jjf-trip{--paper:#FFFFFF; --ink:#2A1A14; --muted:#6B5A52; --line:#E2D6CF; --tide:#F7EFEA;
+  --spruce:#8E0B10; --spruce-ink:#FFFFFF; --sockeye:#C8202A; --field:#FFFFFF; --tag:#FFF9E8;
+  --tag-line:#E9CF8F; --warn:#8A4A0E; --warn-bg:#FFF3D6; --cta:#F4EC2E; --cta-ink:#2A1A14;
   --sticky-top:120px;
   box-sizing:border-box}
 #jjf-trip *,#jjf-trip *::before,#jjf-trip *::after{box-sizing:border-box}
-#jjf-trip{margin:0;background:var(--paper);color:var(--ink);font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.5;font-variant-numeric:tabular-nums}
+#jjf-trip{margin:0;background:var(--paper);color:var(--ink);font-family:"Cabin",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.5;font-variant-numeric:tabular-nums}
 #jjf-trip .wrap{max-width:1140px;margin:0 auto;padding:32px 22px 80px}
 #jjf-trip .sample{background:var(--warn-bg);color:var(--warn);border-radius:6px;padding:10px 14px;font-size:15px;margin-bottom:36px}
 #jjf-trip header.intro{max-width:660px;margin-bottom:40px}
-#jjf-trip .brand{font-family:"Bitter",Georgia,serif;font-weight:700;color:var(--spruce);margin:0 0 18px;font-size:17px}
-#jjf-trip h1{font-family:"Bitter",Georgia,serif;font-size:clamp(34px,5.4vw,54px);line-height:1.05;font-weight:800;letter-spacing:-0.015em;margin:0 0 16px}
+#jjf-trip .brand{font-family:"Bree Serif",Georgia,serif;font-weight:700;color:var(--spruce);margin:0 0 18px;font-size:17px}
+#jjf-trip h1{font-family:"Bree Serif",Georgia,serif;font-size:clamp(34px,5.4vw,54px);line-height:1.05;font-weight:800;letter-spacing:-0.015em;margin:0 0 16px}
 #jjf-trip .intro p{color:var(--muted);margin:0;font-size:19px}
 #jjf-trip .layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:56px;align-items:start}
 @media (max-width:920px){
 #jjf-trip .layout{grid-template-columns:1fr;gap:40px}
 }
 #jjf-trip .step{border-top:2px solid var(--ink);padding-top:16px;margin:0 0 44px}
-#jjf-trip .step h2{font-family:"Bitter",Georgia,serif;font-size:24px;font-weight:700;margin:0 0 4px;display:flex;gap:12px;align-items:baseline}
+#jjf-trip .step h2{font-family:"Bree Serif",Georgia,serif;font-size:24px;font-weight:700;margin:0 0 4px;display:flex;gap:12px;align-items:baseline}
 #jjf-trip .step h2 .n{color:var(--muted);font-weight:500;font-size:18px}
 #jjf-trip .step .note{color:var(--muted);margin:0 0 18px;font-size:16px}
 #jjf-trip .q{margin:0 0 22px}
@@ -37,7 +57,7 @@
 #jjf-trip .card{position:relative;display:block;cursor:pointer}
 #jjf-trip .card input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
 #jjf-trip .card .in{display:block;height:100%;border:1.5px solid var(--line);border-radius:8px;padding:14px 16px;background:var(--field)}
-#jjf-trip .card b{font-family:"Bitter",Georgia,serif;font-size:19px;display:block}
+#jjf-trip .card b{font-family:"Bree Serif",Georgia,serif;font-size:19px;display:block}
 #jjf-trip .card small{display:block;color:var(--muted);font-size:15px;margin-top:2px}
 #jjf-trip .card input:checked + .in{border-color:var(--spruce);box-shadow:inset 0 0 0 1.5px var(--spruce)}
 #jjf-trip .card input:focus-visible + .in{outline:3px solid var(--spruce);outline-offset:2px}
@@ -73,11 +93,11 @@
 #jjf-trip .tag{position:relative;background:var(--tag);border:1.5px solid var(--tag-line);padding:46px 26px 26px;
   clip-path:polygon(34px 0,calc(100% - 34px) 0,100% 34px,100% 100%,0 100%,0 34px)}
 #jjf-trip .tag::before{content:"";position:absolute;top:14px;left:50%;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--paper);border:2px solid var(--tag-line)}
-#jjf-trip .tag-head{font-family:"Bitter",Georgia,serif;font-weight:700;font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px}
-#jjf-trip .tag-trip{font-family:"Bitter",Georgia,serif;font-size:20px;font-weight:700;line-height:1.25;margin:0 0 4px;text-align:center}
+#jjf-trip .tag-head{font-family:"Bree Serif",Georgia,serif;font-weight:700;font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px}
+#jjf-trip .tag-trip{font-family:"Bree Serif",Georgia,serif;font-size:20px;font-weight:700;line-height:1.25;margin:0 0 4px;text-align:center}
 #jjf-trip .tag-when{color:var(--muted);text-align:center;margin:0 0 18px;font-size:15px}
 #jjf-trip .total{text-align:center;border-top:1.5px dashed var(--tag-line);border-bottom:1.5px dashed var(--tag-line);padding:16px 0;margin:0 0 16px}
-#jjf-trip .total .fig{display:block;font-family:"Bitter",Georgia,serif;font-size:46px;font-weight:800;line-height:1;color:var(--sockeye)}
+#jjf-trip .total .fig{display:block;font-family:"Bree Serif",Georgia,serif;font-size:46px;font-weight:800;line-height:1;color:var(--sockeye)}
 #jjf-trip .total .what{display:block;color:var(--muted);font-size:15px;margin-top:6px}
 #jjf-trip .lines{width:100%;border-collapse:collapse;font-size:15px;margin:0 0 14px}
 #jjf-trip .lines td{padding:3px 0;vertical-align:top}
@@ -86,6 +106,11 @@
 #jjf-trip .pay div{display:flex;justify-content:space-between;gap:12px;font-size:15px;margin-bottom:4px}
 #jjf-trip .actions{display:flex;flex-direction:column;gap:10px;margin-top:20px}
 #jjf-trip .btn{font:inherit;font-weight:700;font-size:16px;padding:12px 18px;border-radius:6px;cursor:pointer;border:1.5px solid var(--spruce);min-height:46px;background:transparent;color:var(--spruce)}
+#jjf-trip a.btn{display:flex;align-items:center;justify-content:center;text-decoration:none}
+#jjf-trip a.btn[hidden]{display:none}
+#jjf-trip a.btn[aria-disabled=true]{opacity:.45;pointer-events:none}
+#jjf-trip .fine{font-size:14px;color:var(--muted);text-align:center;margin:2px 0 0}
+#jjf-trip select{font:inherit;color:var(--ink);background:var(--field);border:1.5px solid var(--line);border-radius:6px;padding:10px 12px;min-height:44px;width:100%;max-width:440px}
 #jjf-trip .btn.primary{background:var(--spruce);color:var(--spruce-ink)}
 #jjf-trip .btn:disabled{opacity:.45;cursor:not-allowed}
 #jjf-trip .small-actions{display:flex;gap:16px;justify-content:center;margin-top:4px}
@@ -109,6 +134,17 @@
 }
 #jjf-trip button,#jjf-trip input{letter-spacing:normal;text-transform:none;box-shadow:none}
 #jjf-trip h1,#jjf-trip h2{color:var(--ink)}
+
+/* Jimmie Jack brand */
+#jjf-trip h1,#jjf-trip .step h2,#jjf-trip .card b,#jjf-trip .tag-head,#jjf-trip .tag-trip,#jjf-trip .total .fig,#jjf-trip .brand{font-weight:400}
+#jjf-trip h1{color:var(--spruce);letter-spacing:0}
+#jjf-trip .brand{color:var(--sockeye);text-transform:uppercase;letter-spacing:.06em;font-size:15px}
+#jjf-trip .step{border-top-color:var(--sockeye)}
+#jjf-trip .step h2 .n{color:var(--sockeye)}
+#jjf-trip .btn.primary{background:var(--cta);color:var(--cta-ink);border-color:#C9C11F;font-family:"Bree Serif",Georgia,serif;font-weight:400;font-size:18px}
+#jjf-trip .btn.primary:hover{filter:brightness(.96)}
+#jjf-trip .tag{border-color:var(--tag-line)}
+#jjf-trip .fine a{color:var(--spruce)}
 </style>
 <div id="jjf-trip">
 <div class="wrap">
@@ -116,9 +152,9 @@
   <p class="sample">Sample trip builder. Prices, dates and open spots are placeholders, and nothing here takes a real payment.</p>
 
   <header class="intro">
-    <p class="brand">Jimmie Jack Fishing</p>
+    <p class="brand">Jimmie Jack's Fishing Lodges, Alaska</p>
     <h1>Build your Alaska fishing trip and see the price as you go.</h1>
-    <p>Pick a lodge, your nights and your week. Add a fly-in or saltwater day if you want one. Hold your spot online any time, even at 3 a.m.</p>
+    <p>Pick a lodge, your nights and your week. Add a saltwater day if you want one. Book or hold your spot online any time, even at 3 a.m.</p>
   </header>
 
   <div class="layout">
@@ -137,8 +173,8 @@
           <h2 id="jjf-s2"><span class="n">2</span>Choose your lodge</h2>
           <p class="note">Photos and descriptions would come from the website.</p>
           <div class="cards">
-            <label class="card"><input type="radio" name="jjf_lodge" value="original" checked><span class="in"><b>Original Lodge</b><small>Short lodge description from the website goes here.</small></span></label>
-            <label class="card"><input type="radio" name="jjf_lodge" value="seascape"><span class="in"><b>SeaScape Lodge</b><small>Short lodge description from the website goes here.</small></span></label>
+            <label class="card"><input type="radio" name="jjf_lodge" value="original" checked><span class="in"><b>Original Alaska Lodge</b><small>Short lodge description from the website goes here.</small></span></label>
+            <label class="card"><input type="radio" name="jjf_lodge" value="seascape"><span class="in"><b>Alaska SeaScape Lodge</b><small>Short lodge description from the website goes here.</small></span></label>
           </div>
         </section>
 
@@ -163,14 +199,11 @@
       <div id="jjf-charterSteps" hidden>
         <section class="step" aria-labelledby="jjf-c2">
           <h2 id="jjf-c2"><span class="n">2</span>Which charter?</h2>
-          <div class="cards">
-            <label class="card"><input type="radio" name="jjf_charter" value="riverHalf" checked><span class="in"><b>River, half day</b><small>Trip details from the website go here.</small></span></label>
-            <label class="card"><input type="radio" name="jjf_charter" value="riverFull"><span class="in"><b>River, full day</b><small>Trip details from the website go here.</small></span></label>
-            <label class="card"><input type="radio" name="jjf_charter" value="saltFull"><span class="in"><b>Saltwater, full day</b><small>Trip details from the website go here.</small></span></label>
-          </div>
+          <div class="q"><select id="jjf-tripSel" aria-label="Day trip"></select></div>
         </section>
         <section class="step" aria-labelledby="jjf-c3">
           <h2 id="jjf-c3"><span class="n">3</span>Pick your date</h2>
+          <p class="note">Open dates are confirmed at checkout.</p>
           <div class="q"><input type="date" id="jjf-charterDate" min="2027-05-15" max="2027-09-30" value="2027-06-19" aria-label="Charter date"></div>
         </section>
       </div>
@@ -188,10 +221,6 @@
         <h2 id="jjf-s6"><span class="n" id="jjf-extrasN">6</span>Add to your trip</h2>
         <p class="note">All optional. Prices are per guest unless noted.</p>
         <div class="grid2" id="jjf-pkgExtras">
-          <div class="q">
-            <span class="label">Fly-in fishing days<span class="hint">Swap a river day for a floatplane trip.</span></span>
-            <div class="stepper"><button type="button" data-d="-1" aria-label="Fewer fly-in days">−</button><input type="number" id="jjf-flyin" min="0" max="3" value="0" aria-label="Fly-in days"><button type="button" data-d="1" aria-label="More fly-in days">+</button></div>
-          </div>
           <div class="q">
             <span class="label">Saltwater days<span class="hint">Swap a river day for halibut and salmon offshore.</span></span>
             <div class="stepper"><button type="button" data-d="-1" aria-label="Fewer saltwater days">−</button><input type="number" id="jjf-salt" min="0" max="3" value="0" aria-label="Saltwater days"><button type="button" data-d="1" aria-label="More saltwater days">+</button></div>
@@ -220,8 +249,9 @@
         <div class="pay" id="jjf-pay"></div>
       </div>
       <div class="actions">
-        <button class="btn primary" id="jjf-payBtn" type="button">Pay deposit</button>
-        <button class="btn" id="jjf-holdBtn" type="button">Hold my spot</button>
+        <a class="btn primary" id="jjf-payBtn" href="#">Book now</a>
+        <a class="btn" id="jjf-holdBtn" href="#">Hold my spot</a>
+        <p class="fine">Final price and open dates are confirmed at checkout.<br>Questions? Call <a href="tel:+19072625561">1-907-262-5561</a> or email <a href="mailto:bookings@jimmiejackfishing.com">bookings@jimmiejackfishing.com</a></p>
       </div>
       <div class="small-actions">
         <button class="link" id="jjf-copyBtn" type="button">Copy trip summary</button>
@@ -235,19 +265,49 @@
 <script>
 (function(){
 /* ===== EDIT HERE =====
-   PRICES: change any number below. Per guest unless noted.
-   BOOKING_URL: leave "" to keep the buttons in sample mode, or paste
-   a link (Fair Harbor booking page, Square payment link, contact page)
-   and both buttons will go there. */
-const BOOKING_URL = "";
+   PRICES: placeholder numbers until Jimmie confirms 2027 prices.
+   Per guest unless noted. FareHarbor checkout always shows the real price.
+   FAREHARBOR: item IDs come from FareHarbor > Items. */
 const PRICES = {
   orig4:4295, orig5:5195, orig6:5995, orig7:6695,
   sea4:4695, sea5:5595, sea6:6495, sea7:7195,
   peakMult:1.15, shoulderMult:0.95,
-  flyinPerDay:650, saltPerDay:295, perBox:165, insurePerGuest:300, gearPerGuest:85,
-  riverHalf:295, riverFull:450, saltFull:395,
+  saltPerDay:295, perBox:165, insurePerGuest:300, gearPerGuest:85,
+  riverTrip:350, homerTrip:425, sewardTrip:425,
   depositPct:50, holdAmount:1000, holdDays:5, balanceDaysBefore:90
 };
+const FAREHARBOR = {
+  shortname: "jimmiejackfishing",
+  packages: {
+    original4: { id: 31712, name: "Jimmie Jack's Original Four Package" },
+    original5: { id: 31705, name: "Big Jim's Combo Package" },
+    original6: { id: 33904, name: "The \u201cAlaska River Pro\u201d Package" },
+    original7: { id: 31707, name: "Signature Seven Package" },
+    seascape4: { id: 36205, name: "Alaska SeaScape Lodge, 4 nights" },
+    seascape5: { id: 31912, name: "Alaska SeaScape Lodge, 5 nights" },
+    seascape6: { id: 36216, name: "Alaska SeaScape Lodge, 6 nights" },
+    seascape7: { id: 34862, name: "Alaska SeaScape Lodge, 7 nights" }
+  },
+  holdItem: 127926, // "Custom Package Deposit": confirm with Jimmie this is right for holds
+  dayTrips: [
+    { id: 31685, name: "Kenai River Sockeye Salmon", group: "River", price: "riverTrip" },
+    { id: 31698, name: "Kenai River Silver Salmon", group: "River", price: "riverTrip" },
+    { id: 31704, name: "Kenai River Rainbow Trout", group: "River", price: "riverTrip" },
+    { id: 31690, name: "Kasilof River King Salmon", group: "River", price: "riverTrip" },
+    { id: 175100, name: "Kasilof River Silver Fishing", group: "River", price: "riverTrip" },
+    { id: 562661, name: "Kasilof River Sockeye Salmon", group: "River", price: "riverTrip" },
+    { id: 31694, name: "Homer Halibut Fishing", group: "Homer", price: "homerTrip" },
+    { id: 124721, name: "Homer Halibut", group: "Homer", price: "homerTrip" },
+    { id: 158119, name: "POGO Homer Halibut Combo", group: "Homer", price: "homerTrip" },
+    { id: 36341, name: "Big Jim Homer Halibut Combo", group: "Homer", price: "homerTrip" },
+    { id: 160073, name: "Homer Multi-Species Combo", group: "Homer", price: "homerTrip" },
+    { id: 317339, name: "Tightline Homer Fishing", group: "Homer", price: "homerTrip" },
+    { id: 31703, name: "Seward Combo Trip", group: "Seward", price: "sewardTrip" },
+    { id: 325872, name: "Viking Seward Combo Trip", group: "Seward", price: "sewardTrip" },
+    { id: 31697, name: "Ocean King Trip", group: "Other", price: "sewardTrip" }
+  ]
+};
+const fhLink = (id) => `https://fareharbor.com/embeds/book/${FAREHARBOR.shortname}/items/${id}/?full-items=yes`;
 /* ===== END EDIT ===== */
 const R = {...PRICES};
 
@@ -272,6 +332,15 @@ const fmtLong = d => d.toLocaleDateString("en-US",{weekday:"short",month:"long",
 const radio = n => (root.querySelector(`input[name="jjf_${n}"]:checked`)||{}).value;
 const num = id => { const el = $(id); return Math.min(Number(el.max||999), Math.max(Number(el.min||0), parseInt(el.value,10) || 0)); };
 
+(function buildTrips(){
+  const sel = $("tripSel"); const groups = {};
+  FAREHARBOR.dayTrips.forEach(t => { (groups[t.group] = groups[t.group] || []).push(t); });
+  Object.entries(groups).forEach(([g, list]) => {
+    const og = document.createElement("optgroup"); og.label = g === "Other" ? "Other trips" : g + (g === "River" ? " fishing" : " saltwater");
+    list.forEach(t => { const o = document.createElement("option"); o.value = t.id; o.textContent = t.name; og.append(o); });
+    sel.append(og);
+  });
+})();
 (function buildWeeks(){
   const box = $("weeks");
   let first = true;
@@ -302,7 +371,7 @@ function calc(){
   const isPkg = kind === "package";
   $("pkgSteps").hidden = !isPkg; $("charterSteps").hidden = isPkg; $("pkgExtras").hidden = !isPkg;
   $("guestN").textContent = isPkg ? "5" : "4"; $("extrasN").textContent = isPkg ? "6" : "5";
-  const lines = []; let trip = "", when = "", arrival = null;
+  const lines = []; let trip = "", when = "", arrival = null, pkg = null, dayTrip = null;
   let total = 0;
 
   if (isPkg){
@@ -311,26 +380,25 @@ function calc(){
     const base = R[(lodge === "original" ? "orig" : "sea") + nights];
     const mult = wk ? (wk.tier === "peak" ? R.peakMult : wk.tier === "shoulder" ? R.shoulderMult : 1) : 1;
     const per = base * mult;
-    trip = (lodge === "original" ? "Original Lodge" : "SeaScape Lodge") + ", " + nights + " nights";
+    pkg = FAREHARBOR.packages[lodge + nights];
+    trip = lodge === "original" ? `Original Alaska Lodge: ${pkg.name}, ${nights} nights` : pkg.name;
     if (wk){
       arrival = wk.date; const out = new Date(wk.date.getTime() + nights*864e5);
       when = fmtDate(wk.date) + " to " + fmtDate(out) + ", 2027" + (wk.tier === "peak" ? " (peak week)" : wk.tier === "shoulder" ? " (early or late season)" : "");
     } else when = "Pick an arrival week";
     lines.push([`${guests} guest${guests>1?"s":""} × ${money(per)}`, per*guests]);
-    const fd = Math.min(num("flyin"), nights - 1), sd = Math.min(num("salt"), Math.max(0, nights - 1 - fd));
-    if (num("flyin") !== fd) $("flyin").value = fd;
+    const sd = Math.min(num("salt"), Math.max(0, nights - 1));
     if (num("salt") !== sd) $("salt").value = sd;
-    if (fd) lines.push([`Fly-in, ${fd} day${fd>1?"s":""}`, fd*R.flyinPerDay*guests]);
     if (sd) lines.push([`Saltwater, ${sd} day${sd>1?"s":""}`, sd*R.saltPerDay*guests]);
     const flag = $("seatFlag");
     if (wk && guests > wk.seats){ flag.hidden = false; flag.textContent = `Only ${wk.seats} spots are open that week. Pick another week or we'll call you about splitting the group.`; }
     else flag.hidden = true;
   } else {
-    const c = radio("charter"), dv = $("charterDate").value;
-    const names = {riverHalf:"River, half day", riverFull:"River, full day", saltFull:"Saltwater, full day"};
-    trip = names[c] + " charter";
+    const dv = $("charterDate").value;
+    dayTrip = FAREHARBOR.dayTrips.find(t => String(t.id) === $("tripSel").value) || FAREHARBOR.dayTrips[0];
+    trip = dayTrip.name;
     if (dv){ arrival = new Date(dv + "T00:00:00Z"); when = fmtLong(arrival); } else when = "Pick a date";
-    lines.push([`${guests} guest${guests>1?"s":""} × ${money(R[c])}`, R[c]*guests]);
+    lines.push([`${guests} guest${guests>1?"s":""} × ${money(R[dayTrip.price])}`, R[dayTrip.price]*guests]);
     $("seatFlag").hidden = true;
   }
   const boxes = num("boxes");
@@ -361,21 +429,15 @@ function calc(){
       row(`Balance due ${fmtDate(due)}, ${due.getUTCFullYear()}`, money(total - deposit));
     } else row("Paid in full today", money(total));
   } else row("Paid in full today", money(total));
-  $("payBtn").textContent = `Pay ${money(deposit)} ${deposit < total ? "deposit" : "now"}`;
+  $("payBtn").textContent = isPkg ? `Book now, about ${money(deposit)} ${deposit < total ? "deposit" : "today"}` : "Book this trip";
+  $("payBtn").href = fhLink(isPkg ? pkg.id : dayTrip.id);
+  $("holdBtn").href = fhLink(FAREHARBOR.holdItem);
   $("holdBtn").textContent = `Hold my spot for ${money(R.holdAmount)}`;
   $("holdBtn").hidden = !isPkg;
   const blocked = !arrival || (isPkg && !$("seatFlag").hidden);
-  $("payBtn").disabled = blocked; $("holdBtn").disabled = blocked;
-  window.__summary = [`Jimmie Jack Fishing trip (sample quote)`, trip, when, ...lines.map(([l,v]) => `${l}: ${money(v)}`), `Total: ${money(total)}`, ...[...pay.children].map(d => d.textContent.replace(/\$/, ": $"))].join("\n");
+  $("payBtn").setAttribute("aria-disabled", String(blocked)); $("holdBtn").setAttribute("aria-disabled", String(blocked));
+  window.__summary = [`Jimmie Jack Fishing trip quote`, trip, when, ...lines.map(([l,v]) => `${l}: ${money(v)}`), `Total: ${money(total)}`, ...[...pay.children].map(d => d.textContent.replace(/\$/, ": $"))].join("\n");
 }
-$("payBtn").addEventListener("click", () => {
-  if (BOOKING_URL) { window.location.href = BOOKING_URL; return; }
-  $("status").textContent = "Sample only. In the live version this opens a secure checkout, books the trip, and texts the sales team.";
-});
-$("holdBtn").addEventListener("click", () => {
-  if (BOOKING_URL) { window.location.href = BOOKING_URL; return; }
-  $("status").textContent = `Sample only. In the live version this takes ${money(R.holdAmount)} and holds the spots for ${R.holdDays} days while the group decides.`;
-});
 $("copyBtn").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(window.__summary); $("status").textContent = "Trip summary copied."; }
   catch(e) { $("status").textContent = "Copy didn't work in this browser. Use Print instead."; }
@@ -384,3 +446,7 @@ $("printBtn").addEventListener("click", () => window.print());
 calc();
 })();
 </script>
+<!-- FareHarbor Lightframe: opens checkout as an overlay on this page. Keep once per page. -->
+<script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"></script>
+
+</body></html>
