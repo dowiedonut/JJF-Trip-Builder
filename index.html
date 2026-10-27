@@ -1,0 +1,386 @@
+<!-- Jimmie Jack Fishing trip builder. Paste this whole file into an Avada Code Block. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+#jjf-trip{--paper:#EEF2F0; --ink:#14232B; --muted:#4E5F66; --line:#C5D0CC; --tide:#DCE6E3;
+  --spruce:#1F4D45; --spruce-ink:#FFFFFF; --sockeye:#B8322A; --field:#FFFFFF; --tag:#F7F4E9;
+  --tag-line:#CFC6A8; --warn:#8A4A0E; --warn-bg:#FAEEDC;
+  --sticky-top:120px;
+  box-sizing:border-box}
+#jjf-trip *,#jjf-trip *::before,#jjf-trip *::after{box-sizing:border-box}
+#jjf-trip{margin:0;background:var(--paper);color:var(--ink);font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.5;font-variant-numeric:tabular-nums}
+#jjf-trip .wrap{max-width:1140px;margin:0 auto;padding:32px 22px 80px}
+#jjf-trip .sample{background:var(--warn-bg);color:var(--warn);border-radius:6px;padding:10px 14px;font-size:15px;margin-bottom:36px}
+#jjf-trip header.intro{max-width:660px;margin-bottom:40px}
+#jjf-trip .brand{font-family:"Bitter",Georgia,serif;font-weight:700;color:var(--spruce);margin:0 0 18px;font-size:17px}
+#jjf-trip h1{font-family:"Bitter",Georgia,serif;font-size:clamp(34px,5.4vw,54px);line-height:1.05;font-weight:800;letter-spacing:-0.015em;margin:0 0 16px}
+#jjf-trip .intro p{color:var(--muted);margin:0;font-size:19px}
+#jjf-trip .layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:56px;align-items:start}
+@media (max-width:920px){
+#jjf-trip .layout{grid-template-columns:1fr;gap:40px}
+}
+#jjf-trip .step{border-top:2px solid var(--ink);padding-top:16px;margin:0 0 44px}
+#jjf-trip .step h2{font-family:"Bitter",Georgia,serif;font-size:24px;font-weight:700;margin:0 0 4px;display:flex;gap:12px;align-items:baseline}
+#jjf-trip .step h2 .n{color:var(--muted);font-weight:500;font-size:18px}
+#jjf-trip .step .note{color:var(--muted);margin:0 0 18px;font-size:16px}
+#jjf-trip .q{margin:0 0 22px}
+#jjf-trip .q > .label{display:block;font-weight:700;margin:0 0 8px}
+#jjf-trip .hint{display:block;font-weight:400;color:var(--muted);font-size:15px}
+#jjf-trip .choices{display:flex;flex-wrap:wrap;gap:8px}
+#jjf-trip .choice{position:relative}
+#jjf-trip .choice input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+#jjf-trip .choice span{display:block;padding:9px 15px;border:1.5px solid var(--line);border-radius:999px;background:var(--field);cursor:pointer}
+#jjf-trip .choice input:checked + span{background:var(--spruce);border-color:var(--spruce);color:var(--spruce-ink);font-weight:700}
+#jjf-trip .choice input:focus-visible + span{outline:3px solid var(--spruce);outline-offset:2px}
+#jjf-trip .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+#jjf-trip .card{position:relative;display:block;cursor:pointer}
+#jjf-trip .card input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+#jjf-trip .card .in{display:block;height:100%;border:1.5px solid var(--line);border-radius:8px;padding:14px 16px;background:var(--field)}
+#jjf-trip .card b{font-family:"Bitter",Georgia,serif;font-size:19px;display:block}
+#jjf-trip .card small{display:block;color:var(--muted);font-size:15px;margin-top:2px}
+#jjf-trip .card input:checked + .in{border-color:var(--spruce);box-shadow:inset 0 0 0 1.5px var(--spruce)}
+#jjf-trip .card input:focus-visible + .in{outline:3px solid var(--spruce);outline-offset:2px}
+#jjf-trip .weeks{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px}
+#jjf-trip .wk{position:relative}
+#jjf-trip .wk input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+#jjf-trip .wk .in{display:block;border:1.5px solid var(--line);border-radius:8px;padding:9px 11px;background:var(--field);cursor:pointer;font-size:15px}
+#jjf-trip .wk .d{font-weight:700;display:block}
+#jjf-trip .wk .s{color:var(--muted);font-size:14px}
+#jjf-trip .wk .peak{color:var(--sockeye);font-weight:700}
+#jjf-trip .wk input:checked + .in{background:var(--spruce);border-color:var(--spruce);color:var(--spruce-ink)}
+#jjf-trip .wk input:checked + .in .s,#jjf-trip .wk input:checked + .in .peak{color:var(--spruce-ink)}
+#jjf-trip .wk input:disabled + .in{opacity:.45;cursor:not-allowed;text-decoration:line-through}
+#jjf-trip .wk input:focus-visible + .in{outline:3px solid var(--spruce);outline-offset:2px}
+#jjf-trip .stepper{display:inline-flex;align-items:stretch;border:1.5px solid var(--line);border-radius:6px;background:var(--field);overflow:hidden}
+#jjf-trip .stepper button{font:inherit;font-size:20px;width:44px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+#jjf-trip .stepper button:hover{background:var(--tide)}
+#jjf-trip .stepper input{font:inherit;color:var(--ink);background:var(--field);border:0;width:60px;text-align:center;-moz-appearance:textfield;min-height:44px}
+#jjf-trip .stepper input::-webkit-outer-spin-button,#jjf-trip .stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+#jjf-trip .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px 24px}
+#jjf-trip .toggle{display:flex;gap:12px;align-items:flex-start;font-weight:600;cursor:pointer}
+#jjf-trip .toggle input{width:20px;height:20px;margin-top:3px;accent-color:var(--spruce);flex:none}
+#jjf-trip .toggle .hint{font-weight:400}
+#jjf-trip .flag{margin:10px 0 0;padding:10px 14px;background:var(--warn-bg);color:var(--warn);border-radius:6px;font-size:15px}
+#jjf-trip .flag[hidden]{display:none}
+#jjf-trip :focus-visible{outline:3px solid var(--spruce);outline-offset:2px}
+#jjf-trip input[type=date]{font:inherit;color:var(--ink);background:var(--field);border:1.5px solid var(--line);border-radius:6px;padding:9px 12px;min-height:44px}
+#jjf-trip /* the trip tag */
+.tag-col{position:sticky;top:var(--sticky-top)}
+@media (max-width:920px){
+#jjf-trip .tag-col{position:static}
+}
+#jjf-trip .tag{position:relative;background:var(--tag);border:1.5px solid var(--tag-line);padding:46px 26px 26px;
+  clip-path:polygon(34px 0,calc(100% - 34px) 0,100% 34px,100% 100%,0 100%,0 34px)}
+#jjf-trip .tag::before{content:"";position:absolute;top:14px;left:50%;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--paper);border:2px solid var(--tag-line)}
+#jjf-trip .tag-head{font-family:"Bitter",Georgia,serif;font-weight:700;font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px}
+#jjf-trip .tag-trip{font-family:"Bitter",Georgia,serif;font-size:20px;font-weight:700;line-height:1.25;margin:0 0 4px;text-align:center}
+#jjf-trip .tag-when{color:var(--muted);text-align:center;margin:0 0 18px;font-size:15px}
+#jjf-trip .total{text-align:center;border-top:1.5px dashed var(--tag-line);border-bottom:1.5px dashed var(--tag-line);padding:16px 0;margin:0 0 16px}
+#jjf-trip .total .fig{display:block;font-family:"Bitter",Georgia,serif;font-size:46px;font-weight:800;line-height:1;color:var(--sockeye)}
+#jjf-trip .total .what{display:block;color:var(--muted);font-size:15px;margin-top:6px}
+#jjf-trip .lines{width:100%;border-collapse:collapse;font-size:15px;margin:0 0 14px}
+#jjf-trip .lines td{padding:3px 0;vertical-align:top}
+#jjf-trip .lines td:last-child{text-align:right;white-space:nowrap;padding-left:12px}
+#jjf-trip .lines tr.sub td{border-top:1px solid var(--tag-line);padding-top:7px;font-weight:700}
+#jjf-trip .pay div{display:flex;justify-content:space-between;gap:12px;font-size:15px;margin-bottom:4px}
+#jjf-trip .actions{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+#jjf-trip .btn{font:inherit;font-weight:700;font-size:16px;padding:12px 18px;border-radius:6px;cursor:pointer;border:1.5px solid var(--spruce);min-height:46px;background:transparent;color:var(--spruce)}
+#jjf-trip .btn.primary{background:var(--spruce);color:var(--spruce-ink)}
+#jjf-trip .btn:disabled{opacity:.45;cursor:not-allowed}
+#jjf-trip .small-actions{display:flex;gap:16px;justify-content:center;margin-top:4px}
+#jjf-trip .link{font:inherit;font-size:15px;background:none;border:0;color:var(--spruce);text-decoration:underline;cursor:pointer;padding:6px}
+#jjf-trip .status{font-size:15px;color:var(--spruce);min-height:1.4em;margin:10px 0 0}
+#jjf-trip details.settings{margin-top:64px;border-top:1.5px solid var(--line);padding-top:18px}
+#jjf-trip details.settings summary{cursor:pointer;font-weight:700;font-size:17px}
+#jjf-trip details.settings .note{color:var(--muted);font-size:15px;margin:8px 0 18px}
+#jjf-trip .rates{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px 22px}
+#jjf-trip .rates h4{grid-column:1/-1;margin:12px 0 0;font-size:16px}
+#jjf-trip .rate label{display:block;font-size:14px;margin-bottom:4px;color:var(--muted)}
+#jjf-trip .rate input{font:inherit;color:var(--ink);background:var(--field);border:1.5px solid var(--line);border-radius:6px;padding:8px 10px;width:100%}
+@media (prefers-reduced-motion:no-preference){
+#jjf-trip .total .fig{transition:opacity .2s}
+#jjf-trip .total .fig.bump{opacity:.55}
+}
+@media print{
+#jjf-trip .actions,#jjf-trip .small-actions,#jjf-trip details.settings,#jjf-trip .status,#jjf-trip .sample{display:none}
+#jjf-trip .tag-col{position:static}
+#jjf-trip .layout{grid-template-columns:1fr}
+}
+#jjf-trip button,#jjf-trip input{letter-spacing:normal;text-transform:none;box-shadow:none}
+#jjf-trip h1,#jjf-trip h2{color:var(--ink)}
+</style>
+<div id="jjf-trip">
+<div class="wrap">
+  <!-- SAMPLE NOTICE: delete the next line once prices and booking are real -->
+  <p class="sample">Sample trip builder. Prices, dates and open spots are placeholders, and nothing here takes a real payment.</p>
+
+  <header class="intro">
+    <p class="brand">Jimmie Jack Fishing</p>
+    <h1>Build your Alaska fishing trip and see the price as you go.</h1>
+    <p>Pick a lodge, your nights and your week. Add a fly-in or saltwater day if you want one. Hold your spot online any time, even at 3 a.m.</p>
+  </header>
+
+  <div class="layout">
+    <div id="jjf-builder">
+      <section class="step" aria-labelledby="jjf-s1">
+        <h2 id="jjf-s1"><span class="n">1</span>What kind of trip?</h2>
+        <p class="note">Lodge packages include lodging, meals and guided fishing. Day charters are one day on the water.</p>
+        <div class="choices" role="radiogroup" aria-label="Trip type">
+          <label class="choice"><input type="radio" name="jjf_kind" value="package" checked><span>Lodge package</span></label>
+          <label class="choice"><input type="radio" name="jjf_kind" value="charter"><span>Day charter</span></label>
+        </div>
+      </section>
+
+      <div id="jjf-pkgSteps">
+        <section class="step" aria-labelledby="jjf-s2">
+          <h2 id="jjf-s2"><span class="n">2</span>Choose your lodge</h2>
+          <p class="note">Photos and descriptions would come from the website.</p>
+          <div class="cards">
+            <label class="card"><input type="radio" name="jjf_lodge" value="original" checked><span class="in"><b>Original Lodge</b><small>Short lodge description from the website goes here.</small></span></label>
+            <label class="card"><input type="radio" name="jjf_lodge" value="seascape"><span class="in"><b>SeaScape Lodge</b><small>Short lodge description from the website goes here.</small></span></label>
+          </div>
+        </section>
+
+        <section class="step" aria-labelledby="jjf-s3">
+          <h2 id="jjf-s3"><span class="n">3</span>How many nights?</h2>
+          <p class="note">Longer stays mean more days on the water.</p>
+          <div class="choices" role="radiogroup" aria-label="Nights">
+            <label class="choice"><input type="radio" name="jjf_nights" value="4"><span>4 nights</span></label>
+            <label class="choice"><input type="radio" name="jjf_nights" value="5" checked><span>5 nights</span></label>
+            <label class="choice"><input type="radio" name="jjf_nights" value="6"><span>6 nights</span></label>
+            <label class="choice"><input type="radio" name="jjf_nights" value="7"><span>7 nights</span></label>
+          </div>
+        </section>
+
+        <section class="step" aria-labelledby="jjf-s4">
+          <h2 id="jjf-s4"><span class="n">4</span>Pick your arrival week</h2>
+          <p class="note">Peak weeks cost more. Crossed out weeks are full. In the real version, open spots come straight from the booking system.</p>
+          <div class="weeks" id="jjf-weeks" role="radiogroup" aria-label="Arrival week"></div>
+        </section>
+      </div>
+
+      <div id="jjf-charterSteps" hidden>
+        <section class="step" aria-labelledby="jjf-c2">
+          <h2 id="jjf-c2"><span class="n">2</span>Which charter?</h2>
+          <div class="cards">
+            <label class="card"><input type="radio" name="jjf_charter" value="riverHalf" checked><span class="in"><b>River, half day</b><small>Trip details from the website go here.</small></span></label>
+            <label class="card"><input type="radio" name="jjf_charter" value="riverFull"><span class="in"><b>River, full day</b><small>Trip details from the website go here.</small></span></label>
+            <label class="card"><input type="radio" name="jjf_charter" value="saltFull"><span class="in"><b>Saltwater, full day</b><small>Trip details from the website go here.</small></span></label>
+          </div>
+        </section>
+        <section class="step" aria-labelledby="jjf-c3">
+          <h2 id="jjf-c3"><span class="n">3</span>Pick your date</h2>
+          <div class="q"><input type="date" id="jjf-charterDate" min="2027-05-15" max="2027-09-30" value="2027-06-19" aria-label="Charter date"></div>
+        </section>
+      </div>
+
+      <section class="step" aria-labelledby="jjf-s5">
+        <h2 id="jjf-s5"><span class="n" id="jjf-guestN">5</span>Who's coming?</h2>
+        <div class="q">
+          <span class="label">Guests</span>
+          <div class="stepper"><button type="button" data-d="-1" aria-label="Fewer guests">−</button><input type="number" id="jjf-guests" min="1" max="12" value="4" aria-label="Guests"><button type="button" data-d="1" aria-label="More guests">+</button></div>
+          <p class="flag" id="jjf-seatFlag" hidden></p>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="jjf-s6">
+        <h2 id="jjf-s6"><span class="n" id="jjf-extrasN">6</span>Add to your trip</h2>
+        <p class="note">All optional. Prices are per guest unless noted.</p>
+        <div class="grid2" id="jjf-pkgExtras">
+          <div class="q">
+            <span class="label">Fly-in fishing days<span class="hint">Swap a river day for a floatplane trip.</span></span>
+            <div class="stepper"><button type="button" data-d="-1" aria-label="Fewer fly-in days">−</button><input type="number" id="jjf-flyin" min="0" max="3" value="0" aria-label="Fly-in days"><button type="button" data-d="1" aria-label="More fly-in days">+</button></div>
+          </div>
+          <div class="q">
+            <span class="label">Saltwater days<span class="hint">Swap a river day for halibut and salmon offshore.</span></span>
+            <div class="stepper"><button type="button" data-d="-1" aria-label="Fewer saltwater days">−</button><input type="number" id="jjf-salt" min="0" max="3" value="0" aria-label="Saltwater days"><button type="button" data-d="1" aria-label="More saltwater days">+</button></div>
+          </div>
+        </div>
+        <div class="q">
+          <span class="label">Fish processing and FedEx home<span class="hint">Boxes for the group. Final price is by weight at the fish house.</span></span>
+          <div class="stepper"><button type="button" data-d="-1" aria-label="Fewer boxes">−</button><input type="number" id="jjf-boxes" min="0" max="20" value="0" aria-label="Fish boxes"><button type="button" data-d="1" aria-label="More boxes">+</button></div>
+        </div>
+        <div class="q">
+          <label class="toggle"><input type="checkbox" id="jjf-insure"><span>Cancel for any reason trip protection<span class="hint">Covers every guest in your group. If plans change, you're covered.</span></span></label>
+        </div>
+        <div class="q">
+          <label class="toggle"><input type="checkbox" id="jjf-gear"><span>Jimmie Jack gear pack<span class="hint">Hat, buff and tumbler waiting in your room.</span></span></label>
+        </div>
+      </section>
+    </div>
+
+    <aside class="tag-col" aria-live="polite">
+      <div class="tag">
+        <p class="tag-head">Your trip</p>
+        <p class="tag-trip" id="jjf-tagTrip"></p>
+        <p class="tag-when" id="jjf-tagWhen"></p>
+        <div class="total"><span class="fig" id="jjf-totalFig">$0</span><span class="what" id="jjf-perGuest"></span></div>
+        <table class="lines" id="jjf-lines"><tbody></tbody></table>
+        <div class="pay" id="jjf-pay"></div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="jjf-payBtn" type="button">Pay deposit</button>
+        <button class="btn" id="jjf-holdBtn" type="button">Hold my spot</button>
+      </div>
+      <div class="small-actions">
+        <button class="link" id="jjf-copyBtn" type="button">Copy trip summary</button>
+        <button class="link" id="jjf-printBtn" type="button">Print</button>
+      </div>
+      <p class="status" id="jjf-status"></p>
+    </aside>
+  </div>
+</div>
+</div>
+<script>
+(function(){
+/* ===== EDIT HERE =====
+   PRICES: change any number below. Per guest unless noted.
+   BOOKING_URL: leave "" to keep the buttons in sample mode, or paste
+   a link (Fair Harbor booking page, Square payment link, contact page)
+   and both buttons will go there. */
+const BOOKING_URL = "";
+const PRICES = {
+  orig4:4295, orig5:5195, orig6:5995, orig7:6695,
+  sea4:4695, sea5:5595, sea6:6495, sea7:7195,
+  peakMult:1.15, shoulderMult:0.95,
+  flyinPerDay:650, saltPerDay:295, perBox:165, insurePerGuest:300, gearPerGuest:85,
+  riverHalf:295, riverFull:450, saltFull:395,
+  depositPct:50, holdAmount:1000, holdDays:5, balanceDaysBefore:90
+};
+/* ===== END EDIT ===== */
+const R = {...PRICES};
+
+// sample season: Saturday arrivals, June 5 to Sept 11, 2027
+const WEEKS = [];
+(function(){
+  const seats = [10,8,6,0,4,2,0,5,3,7,0,6,9,10,12];
+  let d = new Date(Date.UTC(2027,5,5));
+  for (let i = 0; i < 15; i++){
+    const m = d.getUTCMonth(), day = d.getUTCDate();
+    const tier = (m === 6 || (m === 7 && day <= 14)) ? "peak" : (m === 5 && day < 12) || m === 8 ? "shoulder" : "regular";
+    WEEKS.push({ id: d.toISOString().slice(0,10), date: new Date(d), tier, seats: seats[i] });
+    d = new Date(d.getTime() + 7*864e5);
+  }
+})();
+
+const root = document.getElementById("jjf-trip");
+const $ = id => document.getElementById("jjf-" + id);
+const money = n => "$" + Math.round(n).toLocaleString("en-US");
+const fmtDate = d => d.toLocaleDateString("en-US",{month:"short",day:"numeric",timeZone:"UTC"});
+const fmtLong = d => d.toLocaleDateString("en-US",{weekday:"short",month:"long",day:"numeric",year:"numeric",timeZone:"UTC"});
+const radio = n => (root.querySelector(`input[name="jjf_${n}"]:checked`)||{}).value;
+const num = id => { const el = $(id); return Math.min(Number(el.max||999), Math.max(Number(el.min||0), parseInt(el.value,10) || 0)); };
+
+(function buildWeeks(){
+  const box = $("weeks");
+  let first = true;
+  WEEKS.forEach(w => {
+    const l = document.createElement("label"); l.className = "wk";
+    const inp = document.createElement("input"); inp.type = "radio"; inp.name = "jjf_week"; inp.value = w.id;
+    if (!w.seats) inp.disabled = true; else if (first && w.tier === "peak") { inp.checked = true; first = false; }
+    const sp = document.createElement("span"); sp.className = "in";
+    const d = document.createElement("span"); d.className = "d"; d.textContent = fmtDate(w.date);
+    const s = document.createElement("span"); s.className = "s";
+    if (!w.seats) s.textContent = "Full";
+    else { s.textContent = w.seats + " spots"; if (w.tier === "peak") { const p = document.createElement("span"); p.className = "peak"; p.textContent = " Peak"; s.append(p); } }
+    sp.append(d, s); l.append(inp, sp); box.append(l);
+  });
+})();
+
+
+root.querySelectorAll(".stepper").forEach(st => {
+  const inp = st.querySelector("input");
+  st.querySelectorAll("button").forEach(b => b.addEventListener("click", () => { inp.value = Math.min(Number(inp.max||999), Math.max(Number(inp.min||0), (parseInt(inp.value,10)||0) + Number(b.dataset.d))); calc(); }));
+});
+root.addEventListener("input", calc);
+root.addEventListener("change", calc);
+
+let last = null;
+function calc(){
+  const kind = radio("kind"), guests = num("guests");
+  const isPkg = kind === "package";
+  $("pkgSteps").hidden = !isPkg; $("charterSteps").hidden = isPkg; $("pkgExtras").hidden = !isPkg;
+  $("guestN").textContent = isPkg ? "5" : "4"; $("extrasN").textContent = isPkg ? "6" : "5";
+  const lines = []; let trip = "", when = "", arrival = null;
+  let total = 0;
+
+  if (isPkg){
+    const lodge = radio("lodge"), nights = Number(radio("nights"));
+    const wk = WEEKS.find(w => w.id === radio("week"));
+    const base = R[(lodge === "original" ? "orig" : "sea") + nights];
+    const mult = wk ? (wk.tier === "peak" ? R.peakMult : wk.tier === "shoulder" ? R.shoulderMult : 1) : 1;
+    const per = base * mult;
+    trip = (lodge === "original" ? "Original Lodge" : "SeaScape Lodge") + ", " + nights + " nights";
+    if (wk){
+      arrival = wk.date; const out = new Date(wk.date.getTime() + nights*864e5);
+      when = fmtDate(wk.date) + " to " + fmtDate(out) + ", 2027" + (wk.tier === "peak" ? " (peak week)" : wk.tier === "shoulder" ? " (early or late season)" : "");
+    } else when = "Pick an arrival week";
+    lines.push([`${guests} guest${guests>1?"s":""} × ${money(per)}`, per*guests]);
+    const fd = Math.min(num("flyin"), nights - 1), sd = Math.min(num("salt"), Math.max(0, nights - 1 - fd));
+    if (num("flyin") !== fd) $("flyin").value = fd;
+    if (num("salt") !== sd) $("salt").value = sd;
+    if (fd) lines.push([`Fly-in, ${fd} day${fd>1?"s":""}`, fd*R.flyinPerDay*guests]);
+    if (sd) lines.push([`Saltwater, ${sd} day${sd>1?"s":""}`, sd*R.saltPerDay*guests]);
+    const flag = $("seatFlag");
+    if (wk && guests > wk.seats){ flag.hidden = false; flag.textContent = `Only ${wk.seats} spots are open that week. Pick another week or we'll call you about splitting the group.`; }
+    else flag.hidden = true;
+  } else {
+    const c = radio("charter"), dv = $("charterDate").value;
+    const names = {riverHalf:"River, half day", riverFull:"River, full day", saltFull:"Saltwater, full day"};
+    trip = names[c] + " charter";
+    if (dv){ arrival = new Date(dv + "T00:00:00Z"); when = fmtLong(arrival); } else when = "Pick a date";
+    lines.push([`${guests} guest${guests>1?"s":""} × ${money(R[c])}`, R[c]*guests]);
+    $("seatFlag").hidden = true;
+  }
+  const boxes = num("boxes");
+  if (boxes) lines.push([`Fish boxes and FedEx, ${boxes} (estimate)`, boxes*R.perBox]);
+  if ($("insure").checked) lines.push(["Trip protection", R.insurePerGuest*guests]);
+  if ($("gear").checked) lines.push(["Gear packs", R.gearPerGuest*guests]);
+  total = lines.reduce((s,[,v]) => s+v, 0);
+
+  $("tagTrip").textContent = trip; $("tagWhen").textContent = when;
+  const fig = $("totalFig");
+  if (last !== null && last !== Math.round(total)) { fig.classList.add("bump"); setTimeout(() => fig.classList.remove("bump"), 200); }
+  last = Math.round(total);
+  fig.textContent = money(total);
+  $("perGuest").textContent = `total for the group, about ${money(total/guests)} per guest`;
+
+  const tb = $("lines").querySelector("tbody"); tb.replaceChildren();
+  lines.forEach(([l,v]) => { const tr = tb.insertRow(); tr.insertCell().textContent = l; tr.insertCell().textContent = money(v); });
+
+  const pay = $("pay"); pay.replaceChildren();
+  const row = (a,b) => { const d = document.createElement("div"); const s = document.createElement("span"); s.textContent = a; const bb = document.createElement("b"); bb.textContent = b; d.append(s, bb); pay.append(d); };
+  let deposit = total;
+  const today = new Date(); const todayUTC = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  if (isPkg && arrival){
+    const due = new Date(arrival.getTime() - R.balanceDaysBefore*864e5);
+    if (due.getTime() > todayUTC){
+      deposit = total * R.depositPct/100;
+      row(`Deposit today (${R.depositPct}%)`, money(deposit));
+      row(`Balance due ${fmtDate(due)}, ${due.getUTCFullYear()}`, money(total - deposit));
+    } else row("Paid in full today", money(total));
+  } else row("Paid in full today", money(total));
+  $("payBtn").textContent = `Pay ${money(deposit)} ${deposit < total ? "deposit" : "now"}`;
+  $("holdBtn").textContent = `Hold my spot for ${money(R.holdAmount)}`;
+  $("holdBtn").hidden = !isPkg;
+  const blocked = !arrival || (isPkg && !$("seatFlag").hidden);
+  $("payBtn").disabled = blocked; $("holdBtn").disabled = blocked;
+  window.__summary = [`Jimmie Jack Fishing trip (sample quote)`, trip, when, ...lines.map(([l,v]) => `${l}: ${money(v)}`), `Total: ${money(total)}`, ...[...pay.children].map(d => d.textContent.replace(/\$/, ": $"))].join("\n");
+}
+$("payBtn").addEventListener("click", () => {
+  if (BOOKING_URL) { window.location.href = BOOKING_URL; return; }
+  $("status").textContent = "Sample only. In the live version this opens a secure checkout, books the trip, and texts the sales team.";
+});
+$("holdBtn").addEventListener("click", () => {
+  if (BOOKING_URL) { window.location.href = BOOKING_URL; return; }
+  $("status").textContent = `Sample only. In the live version this takes ${money(R.holdAmount)} and holds the spots for ${R.holdDays} days while the group decides.`;
+});
+$("copyBtn").addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(window.__summary); $("status").textContent = "Trip summary copied."; }
+  catch(e) { $("status").textContent = "Copy didn't work in this browser. Use Print instead."; }
+});
+$("printBtn").addEventListener("click", () => window.print());
+calc();
+})();
+</script>
